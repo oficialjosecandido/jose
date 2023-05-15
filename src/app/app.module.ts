@@ -1,8 +1,18 @@
-import { NgModule } from '@angular/core';
+// Core Module
+import { NgModule, ChangeDetectionStrategy } from '@angular/core';
+
+// Browser Module
 import { BrowserModule } from '@angular/platform-browser';
 
+// Routing Module
 import { AppRoutingModule } from './app-routing.module';
+
+// Shared Module
+import { SharedModule } from './shared/shared.module';
+
+// Components
 import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -10,9 +20,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [{ provide: ChangeDetectionStrategy, useValue: { name: 'OnPush' } }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
